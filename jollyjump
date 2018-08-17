@@ -1,0 +1,20 @@
+#R (ignoring the 1st number)
+#Using the code sacrilege that in R vectors etc indexing begins at 1. 
+
+Make a vector of length n-1, where values are the number of obs for each value in 1:(n-1)
+#There's certainly a more golfey way to check all are 1, but I did this in about a minute (all being 1 = Jolly)
+
+ 
+
+isjolly <- function(vals)
+{
+  lvals <- length(vals)
+  difs <- rep(0, (lvals-1))
+
+  for(n in 1:(lvals-1))
+  {
+      dif <- abs(vals[n] - vals[n+1])
+      if(dif  < lvals) { difs[dif] <- difs[dif] +1 }
+  }
+  ifelse(length(which(difs == 1)) == (lvals -1), print("Jolly Jumper"), print("DISAPPOINTED"))
+}
